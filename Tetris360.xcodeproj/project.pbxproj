@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		510F018A1C42EE6E0007340B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 510F01891C42EE6E0007340B /* Images.xcassets */; };
-		5151786F1C4310C700156644 /* level3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5151786E1C4310C700156644 /* level3.txt */; };
+		5151786F1C4310C700156644 /* puzzle3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5151786E1C4310C700156644 /* puzzle3.txt */; };
 		581596001724D33B00046DFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581595FF1724D33B00046DFD /* UIKit.framework */; };
 		581596021724D33B00046DFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581596011724D33B00046DFD /* Foundation.framework */; };
 		581596041724D33B00046DFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581596031724D33B00046DFD /* CoreGraphics.framework */; };
@@ -19,10 +19,10 @@
 		5815961C1724D33C00046DFD /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5815961A1724D33C00046DFD /* ViewController_iPhone.xib */; };
 		5E07A1881728409F0073BD49 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E07A1871728409F0073BD49 /* AVFoundation.framework */; };
 		5E07A18A172840A80073BD49 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E07A189172840A80073BD49 /* CoreLocation.framework */; };
-		5E4423D31729FBF00039946F /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5E4423D21729FBF00039946F /* level1.txt */; };
+		5E4423D31729FBF00039946F /* puzzle1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5E4423D21729FBF00039946F /* puzzle1.txt */; };
 		660EB3331725EDCD002C493E /* PieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 660EB3321725EDCD002C493E /* PieceView.m */; };
 		660EB33C172607BC002C493E /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 660EB33B172607BB002C493E /* GameController.m */; };
-		6616B875172A13080045BF3E /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6616B874172A13080045BF3E /* level2.txt */; };
+		6616B875172A13080045BF3E /* puzzle2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6616B874172A13080045BF3E /* puzzle2.txt */; };
 		66617B471728609700244561 /* StackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66617B461728609700244561 /* StackView.m */; };
 		66617B491728C16800244561 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66617B481728C16800244561 /* QuartzCore.framework */; };
 		66617B4B1728C55C00244561 /* TetrisTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 66617B4A1728C55C00244561 /* TetrisTheme.mp3 */; };
@@ -31,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		510F01891C42EE6E0007340B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5151786E1C4310C700156644 /* level3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level3.txt; sourceTree = "<group>"; };
+		5151786E1C4310C700156644 /* puzzle3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = puzzle3.txt; sourceTree = "<group>"; };
 		581595FC1724D33B00046DFD /* Tetris360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tetris360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		581595FF1724D33B00046DFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		581596011724D33B00046DFD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,12 +47,12 @@
 		5815961B1724D33C00046DFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		5E07A1871728409F0073BD49 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5E07A189172840A80073BD49 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5E4423D21729FBF00039946F /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		5E4423D21729FBF00039946F /* puzzle1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = puzzle1.txt; sourceTree = "<group>"; };
 		660EB3311725EDCD002C493E /* PieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PieceView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		660EB3321725EDCD002C493E /* PieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PieceView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		660EB33A172607BB002C493E /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GameController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		660EB33B172607BB002C493E /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GameController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		6616B874172A13080045BF3E /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		6616B874172A13080045BF3E /* puzzle2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = puzzle2.txt; sourceTree = "<group>"; };
 		66617B451728609700244561 /* StackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackView.h; sourceTree = "<group>"; };
 		66617B461728609700244561 /* StackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackView.m; sourceTree = "<group>"; };
 		66617B481728C16800244561 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -130,9 +130,9 @@
 		581596061724D33B00046DFD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5E4423D21729FBF00039946F /* level1.txt */,
-				6616B874172A13080045BF3E /* level2.txt */,
-				5151786E1C4310C700156644 /* level3.txt */,
+				5E4423D21729FBF00039946F /* puzzle1.txt */,
+				6616B874172A13080045BF3E /* puzzle2.txt */,
+				5151786E1C4310C700156644 /* puzzle3.txt */,
 				510F01891C42EE6E0007340B /* Images.xcassets */,
 				5815961A1724D33C00046DFD /* ViewController_iPhone.xib */,
 				66617B4A1728C55C00244561 /* TetrisTheme.mp3 */,
@@ -200,13 +200,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5151786F1C4310C700156644 /* level3.txt in Resources */,
+				5151786F1C4310C700156644 /* puzzle3.txt in Resources */,
 				5815960A1724D33B00046DFD /* InfoPlist.strings in Resources */,
 				5815961C1724D33C00046DFD /* ViewController_iPhone.xib in Resources */,
 				66617B4B1728C55C00244561 /* TetrisTheme.mp3 in Resources */,
 				510F018A1C42EE6E0007340B /* Images.xcassets in Resources */,
-				5E4423D31729FBF00039946F /* level1.txt in Resources */,
-				6616B875172A13080045BF3E /* level2.txt in Resources */,
+				5E4423D31729FBF00039946F /* puzzle1.txt in Resources */,
+				6616B875172A13080045BF3E /* puzzle2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

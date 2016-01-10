@@ -151,14 +151,13 @@
 - (void)drawRect:(CGRect)rect
 {
     //draw each piece based on piece type
-    CGRect rectangle;
     CGContextRef context = UIGraphicsGetCurrentContext();
     [[UIColor whiteColor] setStroke];
     [[PieceView getColorOfType:self.pieceType] setFill];
 
     for (NSInteger i = 0; i < kNUMBER_OF_BLOCKS; i++) {
         //draw each block
-        rectangle = CGRectMake(([[self.blocksCenter objectAtIndex:i] CGPointValue].x) * kGridSize, ([[self.blocksCenter objectAtIndex:i] CGPointValue].y) * kGridSize, kGridSize, kGridSize);
+        CGRect rectangle = CGRectMake(([[self.blocksCenter objectAtIndex:i] CGPointValue].x) * kGridSize, ([[self.blocksCenter objectAtIndex:i] CGPointValue].y) * kGridSize, kGridSize, kGridSize);
         CGContextFillRect(context, rectangle);
         CGContextStrokeRect(context, rectangle);
     }
@@ -166,7 +165,7 @@
 
 
 #pragma mark - touch events
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (self.pieceRotated != PieceRotateStoped) {
         if (self.pieceRotated == PieceRotateThreeTimes) {
             self.pieceRotated = PieceOriginal;

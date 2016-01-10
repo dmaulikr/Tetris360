@@ -35,8 +35,7 @@ float nfmod(float a,float b)
 @property (nonatomic, assign) float lastHeading;
 @property (nonatomic, assign) float zeroColumnHeading;
 @property (nonatomic, assign) NSInteger columnOffset;
-@property (nonatomic, assign) BOOL isMovingScreen;
-@property (nonatomic, assign) BOOL canMove;
+@property (nonatomic, assign) BOOL isCurrentPieceMoving;
 
 @end
 
@@ -54,18 +53,14 @@ float nfmod(float a,float b)
 
 - (id)init {
     if (self = [super init]) { 
-        [self setupCompass];
-        NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"TetrisTheme" ofType:@"mp3"];
-        NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
-        self.audioPlayer.delegate = self;
-        self.audioPlayer.numberOfLoops = -1; //infinite
+        [self initCompass];
+        [self initAudioPlayer];
         self.gameSpeed = 1.0f;
     }
     return self;
 }
 
-- (void)setupCompass
+- (void)initCompass
 {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -74,13 +69,29 @@ float nfmod(float a,float b)
     [self.locationManager startUpdatingHeading];
 }
 
+- (void)initAudioPlayer
+{
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"TetrisTheme" ofType:@"mp3"];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    self.audioPlayer.delegate = self;
+    self.audioPlayer.numberOfLoops = -1; //infinite
+}
+
+- (void)initGameTimer
+{
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/self.gameSpeed
+                                                      target:self
+                                                    selector:@selector(movePieceDown)
+                                                    userInfo:nil
+                                                     repeats:YES];
+}
+
 #pragma mark - game play
 - (void)startGame{
-    
     // Read random puzzle
     NSInteger randomInteger = arc4random_uniform(kPUZZLE_COUNT)+1;
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"level%@", @(randomInteger)]
-                                                         ofType:@"txt"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"puzzle%@", @(randomInteger)] ofType:@"txt"];
     NSString *fileString = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];
     NSArray *lines = [fileString componentsSeparatedByString:@"\n"];
     
@@ -101,17 +112,11 @@ float nfmod(float a,float b)
 
     //start the loop of game control and add piece into map when it reaches the bottom line in bitmap
     self.zeroColumnHeading = self.lastHeading;
-
+    [self.delegate updateStack];
+    [self initGameTimer];
+    
     //start background music
     [self.audioPlayer play];
-
-    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/self.gameSpeed
-                                                      target:self
-                                                    selector:@selector(movePieceDown)
-                                                    userInfo:nil
-                                                     repeats:YES];
-    
-    [self.delegate updateStack];
 }
 
 
@@ -128,18 +133,12 @@ float nfmod(float a,float b)
 - (void)resumeGame{
     //freeze piece and pause timer
     self.gameStatus = GameRunning;
-    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:self.gameSpeed
-                                                      target:self
-                                                    selector:@selector(movePieceDown)
-                                                    userInfo:nil
-                                                     repeats:YES];
-
+    [self initGameTimer];
     [self.audioPlayer play];
 }
 
 
 - (BOOL)checkClearLine{
-
     NSInteger numberOfClearLine = 0;
     // check from top to bottom
     for (NSInteger row_index = 0; row_index < kNUMBER_OF_ROW; row_index++) {
@@ -173,13 +172,10 @@ float nfmod(float a,float b)
     if (self.gameScore >= self.gameLevel * 40) {
         self.gameLevel++;
         [self.gameTimer invalidate];
+        self.gameTimer = nil;
         self.gameSpeed *= 1.5;
-        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/self.gameSpeed
-                                                          target:self
-                                                        selector:@selector(movePieceDown)
-                                                        userInfo:nil
-                                                         repeats:YES];
         [self.delegate updateLevel:self.gameLevel];
+        [self initGameTimer];
     }
 
     return numberOfClearLine > 0;
@@ -215,7 +211,7 @@ float nfmod(float a,float b)
 #pragma mark - control of pieces
 
 - (PieceView *)generatePiece{
-    self.canMove = YES;
+    self.isCurrentPieceMoving = YES;
     //generate a random tetris piece
     NSInteger randomNumber = arc4random() % 7 +1; //7 types of pieces
     self.currentPieceView = [[PieceView alloc] initWithPieceType:randomNumber pieceCenter:CGPointMake((self.columnOffset + 4)%kNUMBER_OF_COLUMN, 0)];
@@ -241,11 +237,12 @@ float nfmod(float a,float b)
         }
     }
 
-    if (self.canMove) {
+    if (self.isCurrentPieceMoving) {
         if (hittingAPiece || hittingTheFloor) {
             //stop moving pieces
-            self.canMove = NO;
+            self.isCurrentPieceMoving = NO;
             self.currentPieceView.pieceRotated = PieceRotateStoped;
+            
             //record this piece to bitmap and remove the subview of this piece
             [self recordBitmapWithCurrentPiece];
             if([self.delegate respondsToSelector:@selector(removeCurrentPiece)])
@@ -277,7 +274,7 @@ float nfmod(float a,float b)
 
 - (void)dropPiece
 {
-    while (![self movePieceDown] && self.canMove) {
+    while (![self movePieceDown] && self.isCurrentPieceMoving) {
         continue;
     }
 }
@@ -314,7 +311,7 @@ float nfmod(float a,float b)
     CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x - kGridSize, self.currentPieceView.center.y);
     CGPoint newLogicalCenter = CGPointMake(nfmod(self.currentPieceView.pieceCenter.x-1, kNUMBER_OF_COLUMN), self.currentPieceView.pieceCenter.y);
     
-    if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.canMove) {
+    if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {
         self.currentPieceView.center = newViewCenter;
         self.currentPieceView.pieceCenter = newLogicalCenter;
     }
@@ -324,7 +321,7 @@ float nfmod(float a,float b)
     CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x + kGridSize, self.currentPieceView.center.y);
     CGPoint newLogicalCenter = CGPointMake(self.currentPieceView.pieceCenter.x + 1, self.currentPieceView.pieceCenter.y);
     
-    if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.canMove) {
+    if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {
         self.currentPieceView.center = newViewCenter;
         self.currentPieceView.pieceCenter = newLogicalCenter;
     }
@@ -334,7 +331,7 @@ float nfmod(float a,float b)
 - (void)moveScreenLeft{
     CGPoint newLogicalCenter = CGPointMake(nfmod(self.currentPieceView.pieceCenter.x-1, kNUMBER_OF_COLUMN), self.currentPieceView.pieceCenter.y);
 
-    if (![self lateralCollisionForLocation:newLogicalCenter] && self.canMove) {
+    if (![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {
         self.currentPieceView.pieceCenter = newLogicalCenter;
         self.columnOffset = nfmod((self.columnOffset+ kNUMBER_OF_COLUMN-1)%kNUMBER_OF_COLUMN, kNUMBER_OF_COLUMN);
     }
@@ -346,7 +343,7 @@ float nfmod(float a,float b)
 - (void)moveScreenRight{
     CGPoint newLogicalCenter = CGPointMake(nfmod(self.currentPieceView.pieceCenter.x+1, kNUMBER_OF_COLUMN), self.currentPieceView.pieceCenter.y);
     
-    if (![self lateralCollisionForLocation:newLogicalCenter] && self.canMove) {
+    if (![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {
         self.currentPieceView.pieceCenter = newLogicalCenter;
         self.columnOffset = nfmod((self.columnOffset+1)%kNUMBER_OF_COLUMN, kNUMBER_OF_COLUMN);
     }
@@ -360,15 +357,12 @@ float nfmod(float a,float b)
         return;
     }
     
-    self.isMovingScreen = YES;
-    
     if (column == 0) {
         // Recalibrate when passing through 0
         self.zeroColumnHeading = self.lastHeading;
     }
     
     if (column >= 0 & column < kNUMBER_OF_COLUMN) {
-        
         NSInteger columnsToMoveLeft;
         NSInteger columnsToMoveRight;
         
@@ -394,8 +388,6 @@ float nfmod(float a,float b)
             }
         }
     }
-    
-    self.isMovingScreen = NO;
 }
 
 
@@ -423,8 +415,6 @@ float nfmod(float a,float b)
 
 - (void)updateViewAtColumn:(NSInteger)column andRow: (NSInteger)row withType:(PieceType)type{
     pieceStack[row][column] = type;
-    //update pieceStackView
-    //    [self.delegate recordRectAtx:column andRow:row withType:type];
 }
 
 #pragma mark - CLLocationManagerDelegate methods

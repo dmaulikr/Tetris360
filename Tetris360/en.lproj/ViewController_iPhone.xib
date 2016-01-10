@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
+            <connections>
+                <outlet property="calibratingView" destination="143" id="WA3-em-yk9"/>
+                <outlet property="cameraView" destination="122" id="J7e-R7-1Kv"/>
+                <outlet property="gameStatusLabel" destination="217" id="C2X-z9-f0T"/>
+                <outlet property="levelLabel" destination="260" id="bNw-2S-cuz"/>
+                <outlet property="scoreLabel" destination="274" id="11b-0F-9pR"/>
+                <outlet property="startButton" destination="50" id="Y5H-2l-fl2"/>
+                <outlet property="stopButton" destination="174" id="4Dq-Bp-f1y"/>
+                <outlet property="tutorialButton" destination="737" id="fRG-Ai-6YY"/>
+                <outlet property="tutorialView" destination="589" id="NIW-yz-E2Y"/>
+                <outlet property="view" destination="6" id="2Qn-Gn-1EJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="122" userLabel="camera view">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="143">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="152">
+                            <rect key="frame" x="141" y="265" width="37" height="37"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Calibrating Compass" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="155">
+                            <rect key="frame" x="80" y="216" width="159" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="152" firstAttribute="top" secondItem="143" secondAttribute="top" constant="265" id="154"/>
+                        <constraint firstItem="155" firstAttribute="top" secondItem="143" secondAttribute="top" constant="216" id="156"/>
+                        <constraint firstItem="155" firstAttribute="centerX" secondItem="152" secondAttribute="centerX" id="159"/>
+                        <constraint firstItem="155" firstAttribute="centerX" secondItem="143" secondAttribute="centerX" id="584"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="174">
+                    <rect key="frame" x="242" y="-4" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="176"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="gtk_media_stop">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="stopGame:" destination="-1" eventType="touchUpInside" id="193"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="737">
+                    <rect key="frame" x="204" y="-4" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="739"/>
+                        <constraint firstAttribute="width" constant="42" id="816"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <state key="normal" title="?">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showTutorial:" destination="-1" eventType="touchUpInside" id="766"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50">
+                    <rect key="frame" x="279" y="-4" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="167"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="gtk_media_play_ltr">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="startGameClicked:" destination="-1" eventType="touchUpInside" id="105"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Level:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="229">
+                    <rect key="frame" x="11" y="6" width="57" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="343"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="260">
+                    <rect key="frame" x="75" y="6" width="31" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="31" id="270"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="274">
+                    <rect key="frame" x="168" y="6" width="43" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="43" id="753"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="232">
+                    <rect key="frame" x="103" y="6" width="60" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="244"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="217" userLabel="game status">
+                    <rect key="frame" x="0.0" y="53.5" width="320" height="461"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="461" id="227"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="122" firstAttribute="top" secondItem="6" secondAttribute="top" id="131"/>
+                <constraint firstItem="122" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="132"/>
+                <constraint firstItem="122" firstAttribute="bottom" secondItem="6" secondAttribute="bottom" id="134"/>
+                <constraint firstItem="143" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="149"/>
+                <constraint firstItem="232" firstAttribute="baseline" secondItem="260" secondAttribute="baseline" id="334"/>
+                <constraint firstItem="229" firstAttribute="baseline" secondItem="260" secondAttribute="baseline" id="356"/>
+                <constraint firstItem="229" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="11" id="370"/>
+                <constraint firstItem="232" firstAttribute="baseline" secondItem="274" secondAttribute="baseline" id="380"/>
+                <constraint firstItem="260" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="75" id="423"/>
+                <constraint firstItem="143" firstAttribute="trailing" secondItem="6" secondAttribute="trailing" id="496"/>
+                <constraint firstItem="122" firstAttribute="trailing" secondItem="6" secondAttribute="trailing" id="508"/>
+                <constraint firstItem="174" firstAttribute="top" secondItem="50" secondAttribute="top" id="581"/>
+                <constraint firstItem="174" firstAttribute="bottom" secondItem="50" secondAttribute="bottom" id="582"/>
+                <constraint firstItem="217" firstAttribute="centerY" secondItem="122" secondAttribute="centerY" id="585"/>
+                <constraint firstItem="217" firstAttribute="trailing" secondItem="6" secondAttribute="trailing" id="586"/>
+                <constraint firstItem="217" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="587"/>
+                <constraint firstItem="737" firstAttribute="bottom" secondItem="174" secondAttribute="bottom" id="743"/>
+                <constraint firstItem="737" firstAttribute="top" secondItem="6" secondAttribute="top" constant="-4" id="744"/>
+                <constraint firstItem="737" firstAttribute="top" secondItem="174" secondAttribute="top" id="746"/>
+                <constraint firstItem="229" firstAttribute="top" secondItem="6" secondAttribute="top" constant="6" id="751"/>
+                <constraint firstAttribute="trailing" secondItem="274" secondAttribute="trailing" constant="109" id="762"/>
+                <constraint firstItem="232" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="103" id="765"/>
+                <constraint firstItem="174" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="242" id="812"/>
+                <constraint firstItem="50" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="279" id="813"/>
+                <constraint firstItem="737" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="204" id="815"/>
+                <constraint firstItem="143" firstAttribute="top" secondItem="6" secondAttribute="top" id="gFO-bW-klE"/>
+                <constraint firstItem="143" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="jHO-9X-VO4"/>
+                <constraint firstAttribute="trailing" secondItem="143" secondAttribute="trailing" id="x7r-QC-PR5"/>
+                <constraint firstAttribute="bottom" secondItem="143" secondAttribute="bottom" id="ySs-0k-dnl"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="136" appends="YES" id="139"/>
+                <outletCollection property="gestureRecognizers" destination="161" appends="YES" id="164"/>
+            </connections>
+        </view>
+        <tapGestureRecognizer cancelsTouchesInView="NO" id="136">
+            <connections>
+                <action selector="respondToScreenTap:" destination="-1" id="140"/>
+                <outlet property="delegate" destination="-1" id="137"/>
+            </connections>
+        </tapGestureRecognizer>
+        <swipeGestureRecognizer direction="down" id="161">
+            <connections>
+                <action selector="respondToSwipe:" destination="-1" id="163"/>
+                <outlet property="delegate" destination="-1" id="162"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <view alpha="0.80000001192092896" contentMode="scaleToFill" id="589" userLabel="Tutorial View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="590">
+                    <rect key="frame" x="124" y="157" width="73" height="73"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="73" id="594"/>
+                        <constraint firstAttribute="height" constant="73" id="596"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Button" image="gtk_media_play_ltr.png">
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="startGameClicked:" destination="-1" eventType="touchUpInside" id="736"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tap left side of screen to move piece to the left" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="145" translatesAutoresizingMaskIntoConstraints="NO" id="603">
+                    <rect key="frame" x="10" y="281" width="145" height="141"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="145" id="608"/>
+                        <constraint firstAttribute="height" constant="141" id="613"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spin to move and fill tetris 360 degrees around you!" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="210" translatesAutoresizingMaskIntoConstraints="NO" id="633">
+                    <rect key="frame" x="63" y="-9" width="210" height="141"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="141" id="635"/>
+                        <constraint firstAttribute="width" constant="210" id="645"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tap right side of screen to move piece to the right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="145" translatesAutoresizingMaskIntoConstraints="NO" id="624">
+                    <rect key="frame" x="184" y="281" width="145" height="141"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="145" id="625"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="655" userLabel="game status">
+                    <rect key="frame" x="0.0" y="210" width="320" height="79"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="79" id="669"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Swipe down to drop piece" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="210" translatesAutoresizingMaskIntoConstraints="NO" id="676">
+                    <rect key="frame" x="63" y="409" width="210" height="81"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="81" id="731"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="603" firstAttribute="leading" secondItem="589" secondAttribute="leading" constant="10" id="623"/>
+                <constraint firstItem="624" firstAttribute="leading" secondItem="589" secondAttribute="leading" constant="184" id="631"/>
+                <constraint firstItem="624" firstAttribute="baseline" secondItem="603" secondAttribute="baseline" id="632"/>
+                <constraint firstItem="633" firstAttribute="leading" secondItem="589" secondAttribute="leading" constant="63" id="652"/>
+                <constraint firstItem="633" firstAttribute="top" secondItem="589" secondAttribute="top" constant="-9" id="653"/>
+                <constraint firstItem="655" firstAttribute="trailing" secondItem="589" secondAttribute="trailing" id="660"/>
+                <constraint firstItem="655" firstAttribute="leading" secondItem="589" secondAttribute="leading" id="661"/>
+                <constraint firstItem="655" firstAttribute="centerX" secondItem="590" secondAttribute="centerX" id="662"/>
+                <constraint firstItem="624" firstAttribute="top" secondItem="603" secondAttribute="top" id="671"/>
+                <constraint firstItem="676" firstAttribute="leading" secondItem="633" secondAttribute="leading" id="699"/>
+                <constraint firstItem="633" firstAttribute="trailing" secondItem="676" secondAttribute="trailing" id="701"/>
+                <constraint firstItem="603" firstAttribute="top" secondItem="589" secondAttribute="top" constant="281" id="729"/>
+                <constraint firstAttribute="bottom" secondItem="676" secondAttribute="bottom" constant="78" id="730"/>
+                <constraint firstItem="590" firstAttribute="top" secondItem="589" secondAttribute="top" constant="157" id="734"/>
+                <constraint firstItem="655" firstAttribute="top" secondItem="589" secondAttribute="top" constant="210" id="735"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gtk_media_play_ltr" width="128" height="128"/>
+        <image name="gtk_media_play_ltr.png" width="128" height="128"/>
+        <image name="gtk_media_stop" width="128" height="128"/>
+    </resources>
+</document>

@@ -12,7 +12,7 @@
 extern NSInteger const kNUMBER_OF_ROW;
 extern NSInteger const kNUMBER_OF_COLUMN;
 extern NSInteger const kNUMBER_OF_COLUMN_PER_SCREEN;
-extern NSInteger const kDegreesPerColumn;
+extern NSInteger const kDEGREES_PER_COLUMN;
 
 typedef NS_ENUM(NSInteger, GameStatus){
     GameStopped,

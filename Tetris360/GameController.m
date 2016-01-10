@@ -16,7 +16,8 @@
 NSInteger const kNUMBER_OF_ROW = 17;
 NSInteger const kNUMBER_OF_COLUMN = 30;
 NSInteger const kNUMBER_OF_COLUMN_PER_SCREEN = 10;
-NSInteger const kDegreesPerColumn = 12;
+NSInteger const kDEGREES_PER_COLUMN = 12;
+NSInteger const kPUZZLE_COUNT = 3;
 
 static PieceType pieceStack[kNUMBER_OF_ROW][kNUMBER_OF_COLUMN];
 
@@ -35,7 +36,6 @@ float nfmod(float a,float b)
 @property (nonatomic, assign) float zeroColumnHeading;
 @property (nonatomic, assign) NSInteger columnOffset;
 @property (nonatomic, assign) BOOL isMovingScreen;
-@property (nonatomic, assign) NSInteger puzzle;
 @property (nonatomic, assign) BOOL canMove;
 
 @end
@@ -60,8 +60,6 @@ float nfmod(float a,float b)
         self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
         self.audioPlayer.delegate = self;
         self.audioPlayer.numberOfLoops = -1; //infinite
-        
-        self.puzzle = 1;
         self.gameSpeed = 1.0f;
     }
     return self;
@@ -79,8 +77,9 @@ float nfmod(float a,float b)
 #pragma mark - game play
 - (void)startGame{
     
-    // Read puzzle
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"level%@", @(self.puzzle)]
+    // Read random puzzle
+    NSInteger randomInteger = arc4random_uniform(kPUZZLE_COUNT)+1;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"level%@", @(randomInteger)]
                                                          ofType:@"txt"];
     NSString *fileString = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];
     NSArray *lines = [fileString componentsSeparatedByString:@"\n"];
@@ -434,7 +433,7 @@ float nfmod(float a,float b)
 {
     if (self.gameStatus == GameRunning) {
         float relativeHeading = newHeading.trueHeading - self.zeroColumnHeading;
-        NSInteger column = nfmod((NSInteger)(relativeHeading / kDegreesPerColumn), kNUMBER_OF_COLUMN);
+        NSInteger column = nfmod((NSInteger)(relativeHeading / kDEGREES_PER_COLUMN), kNUMBER_OF_COLUMN);
         [self moveToColumn:column];
     }
     

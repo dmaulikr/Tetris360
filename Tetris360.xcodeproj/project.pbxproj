@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		510F018A1C42EE6E0007340B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 510F01891C42EE6E0007340B /* Images.xcassets */; };
+		5151786F1C4310C700156644 /* level3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5151786E1C4310C700156644 /* level3.txt */; };
 		581596001724D33B00046DFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581595FF1724D33B00046DFD /* UIKit.framework */; };
 		581596021724D33B00046DFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581596011724D33B00046DFD /* Foundation.framework */; };
 		581596041724D33B00046DFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581596031724D33B00046DFD /* CoreGraphics.framework */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		510F01891C42EE6E0007340B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5151786E1C4310C700156644 /* level3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level3.txt; sourceTree = "<group>"; };
 		581595FC1724D33B00046DFD /* Tetris360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tetris360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		581595FF1724D33B00046DFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		581596011724D33B00046DFD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +132,7 @@
 			children = (
 				5E4423D21729FBF00039946F /* level1.txt */,
 				6616B874172A13080045BF3E /* level2.txt */,
+				5151786E1C4310C700156644 /* level3.txt */,
 				510F01891C42EE6E0007340B /* Images.xcassets */,
 				5815961A1724D33C00046DFD /* ViewController_iPhone.xib */,
 				66617B4A1728C55C00244561 /* TetrisTheme.mp3 */,
@@ -197,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5151786F1C4310C700156644 /* level3.txt in Resources */,
 				5815960A1724D33B00046DFD /* InfoPlist.strings in Resources */,
 				5815961C1724D33C00046DFD /* ViewController_iPhone.xib in Resources */,
 				66617B4B1728C55C00244561 /* TetrisTheme.mp3 in Resources */,

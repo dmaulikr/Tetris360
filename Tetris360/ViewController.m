@@ -179,15 +179,6 @@
     }
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    if (touch.view != self.pieceStackView) {
-        return NO;
-    }
-    
-    return YES;
-}
-
 - (void)calibrationFinished
 {
     [self.calibratingView removeFromSuperview];

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-#define kGridSize(x) x/kNUMBER_OF_COLUMN_PER_SCREEN
 #define kNUMBER_OF_BLOCKS 4
 
 

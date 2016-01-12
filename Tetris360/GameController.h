@@ -41,10 +41,12 @@ typedef NS_ENUM(NSInteger, GameStatus){
 // define delegate property
 @property (nonatomic, assign) id<GameControllerDelegate> delegate;
 
+
+@property (nonatomic, strong) PieceView *currentPieceView;
+@property (nonatomic, assign) CGFloat gridWidth;
+
 //game status
 @property (nonatomic, assign) GameStatus gameStatus;
-@property (nonatomic, strong) PieceView *currentPieceView;
-
 @property (nonatomic, assign) NSInteger gameLevel;
 @property (nonatomic, assign) NSInteger gameScore;
 @property (nonatomic, assign) float gameSpeed;

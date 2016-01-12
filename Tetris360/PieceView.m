@@ -17,19 +17,20 @@
     self.pieceType = type;
     self.pieceCenter = center;
     CGRect frame;
+    CGFloat gridWidth = [[GameController shareManager] gridWidth];
     switch (type) {
         case PieceTypeI:
-            frame = CGRectMake(kGridSize([UIScreen mainScreen].bounds.size.width)*4.0, 0, kGridSize([UIScreen mainScreen].bounds.size.width) * 4, kGridSize([UIScreen mainScreen].bounds.size.width) * 4);
+            frame = CGRectMake(gridWidth*4.0, 0, gridWidth * 4, gridWidth * 4);
             break;
         case PieceTypeO:
-            frame = CGRectMake(kGridSize([UIScreen mainScreen].bounds.size.width)*4, 0, kGridSize([UIScreen mainScreen].bounds.size.width) * 2, kGridSize([UIScreen mainScreen].bounds.size.width) * 2);
+            frame = CGRectMake(gridWidth*4, 0, gridWidth * 2, gridWidth * 2);
             break;
         case PieceTypeJ:
         case PieceTypeL:
         case PieceTypeS:
         case PieceTypeT:
         case PieceTypeZ:
-            frame = CGRectMake(kGridSize([UIScreen mainScreen].bounds.size.width)*4.0, 0, kGridSize([UIScreen mainScreen].bounds.size.width) * 3, kGridSize([UIScreen mainScreen].bounds.size.width) * 3);
+            frame = CGRectMake(gridWidth*4.0, 0, gridWidth * 3, gridWidth * 3);
             break;
         default:
             break;
@@ -154,10 +155,10 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     [[UIColor whiteColor] setStroke];
     [[PieceView getColorOfType:self.pieceType] setFill];
-
+    CGFloat gridWidth = [[GameController shareManager] gridWidth];
     for (NSInteger i = 0; i < kNUMBER_OF_BLOCKS; i++) {
         //draw each block
-        CGRect rectangle = CGRectMake(([[self.blocksCenter objectAtIndex:i] CGPointValue].x) * kGridSize([UIScreen mainScreen].bounds.size.width), ([[self.blocksCenter objectAtIndex:i] CGPointValue].y) * kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width));
+        CGRect rectangle = CGRectMake(([[self.blocksCenter objectAtIndex:i] CGPointValue].x) * gridWidth, ([[self.blocksCenter objectAtIndex:i] CGPointValue].y) * gridWidth, gridWidth, gridWidth);
         CGContextFillRect(context, rectangle);
         CGContextStrokeRect(context, rectangle);
     }

@@ -74,11 +74,12 @@
 
 - (void)setupStackView
 {
+    CGFloat gridWidth = [[GameController shareManager] gridWidth];
     self.pieceStackView  = [[StackView alloc] initWithFrame:CGRectMake(0,
                                                                        (CGRectGetHeight(self.view.frame) -
-                                                                       kGridSize([UIScreen mainScreen].bounds.size.width) * kNUMBER_OF_ROW),
-                                                                       kGridSize([UIScreen mainScreen].bounds.size.width) * kNUMBER_OF_COLUMN,
-                                                                       kGridSize([UIScreen mainScreen].bounds.size.width) * kNUMBER_OF_ROW)];
+                                                                       gridWidth * kNUMBER_OF_ROW),
+                                                                       gridWidth * kNUMBER_OF_COLUMN,
+                                                                       gridWidth * kNUMBER_OF_ROW)];
     [self.view addSubview:self.pieceStackView];
     [self.stopButton setHidden:YES];
 }
@@ -122,7 +123,8 @@
 
 - (IBAction)showTutorial:(id)sender{
     if (self.tutorialView.isHidden) {
-        if ([[GameController shareManager] gameStatus] == GameRunning) {             [[GameController shareManager] pauseGame];
+        if ([[GameController shareManager] gameStatus] == GameRunning) {
+            [[GameController shareManager] pauseGame];
             [self.movingPieceView setHidden:YES];
         }
         [self.tutorialView setHidden:NO];

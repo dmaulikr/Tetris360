@@ -56,6 +56,8 @@ float nfmod(float a,float b)
         [self initCompass];
         [self initAudioPlayer];
         _gameSpeed = 1.0f;
+        _gridWidth = [UIScreen mainScreen].bounds.size.width/kNUMBER_OF_COLUMN_PER_SCREEN;
+        
     }
     return self;
 }
@@ -224,7 +226,7 @@ float nfmod(float a,float b)
     if (self.gameStatus != GameRunning) {
         return NO;
     }
-    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x, self.currentPieceView.center.y + kGridSize([UIScreen mainScreen].bounds.size.width));
+    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x, self.currentPieceView.center.y + self.gridWidth);
     CGPoint newLogicalCenter = CGPointMake(self.currentPieceView.pieceCenter.x, self.currentPieceView.pieceCenter.y + 1);
 
     NSArray *blocks = [self.currentPieceView blocksCenter];
@@ -306,8 +308,8 @@ float nfmod(float a,float b)
     for (NSValue *block in blocks) {
         CGPoint blockPoint = [block CGPointValue];
         if (
-            (location.x + blockPoint.x*kGridSize([UIScreen mainScreen].bounds.size.width)) <= (kGridSize([UIScreen mainScreen].bounds.size.width)/2) ||
-            (location.x + blockPoint.x*kGridSize([UIScreen mainScreen].bounds.size.width)) > ((kNUMBER_OF_COLUMN_PER_SCREEN+0.5) * kGridSize([UIScreen mainScreen].bounds.size.width))) {
+            (location.x + blockPoint.x*self.gridWidth) <= (self.gridWidth/2) ||
+            (location.x + blockPoint.x*self.gridWidth) > ((kNUMBER_OF_COLUMN_PER_SCREEN+0.5) * self.gridWidth)) {
             hittingEdgeOfScreen = YES;
         }
     }
@@ -319,7 +321,7 @@ float nfmod(float a,float b)
         return;
     }
     
-    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x - kGridSize([UIScreen mainScreen].bounds.size.width), self.currentPieceView.center.y);
+    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x - self.gridWidth, self.currentPieceView.center.y);
     CGPoint newLogicalCenter = CGPointMake(nfmod(self.currentPieceView.pieceCenter.x-1, kNUMBER_OF_COLUMN), self.currentPieceView.pieceCenter.y);
     
     if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {
@@ -333,7 +335,7 @@ float nfmod(float a,float b)
         return;
     }
     
-    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x + kGridSize([UIScreen mainScreen].bounds.size.width), self.currentPieceView.center.y);
+    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x + self.gridWidth, self.currentPieceView.center.y);
     CGPoint newLogicalCenter = CGPointMake(self.currentPieceView.pieceCenter.x + 1, self.currentPieceView.pieceCenter.y);
     
     if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {

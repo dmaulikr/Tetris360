@@ -11,6 +11,4 @@
 
 @interface StackView : UIView
 
-@property (nonatomic, assign) PieceType currentPieceType;
-
 @end

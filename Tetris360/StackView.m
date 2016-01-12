@@ -31,9 +31,10 @@
     for (NSInteger i = 0; i < kNUMBER_OF_ROW; i++) {
         for (NSInteger j = 0; j < kNUMBER_OF_COLUMN_PER_SCREEN; j++) {
 
+            CGFloat gridWidth = [[GameController shareManager] gridWidth];
             PieceType type = [[GameController alloc] getTypeAtRow:i
                                                         column:[[GameController shareManager] columnForScreenColumn:j]];
-            CGRect rectangle = CGRectMake(j * kGridSize([UIScreen mainScreen].bounds.size.width), i * kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width));
+            CGRect rectangle = CGRectMake(j * gridWidth, i * gridWidth, gridWidth, gridWidth);
             
             if (type != PieceTypeNone) {
                 UIColor *color = [PieceView getColorOfType:type];

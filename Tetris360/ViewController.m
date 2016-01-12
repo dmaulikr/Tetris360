@@ -14,6 +14,8 @@
 
 @interface ViewController () <GameControllerDelegate>
 
+@property (nonatomic, weak) GameController *gameController;
+
 @property (nonatomic, weak) IBOutlet UIButton *startButton;
 @property (nonatomic, weak) IBOutlet UIButton *stopButton;
 @property (nonatomic, weak) IBOutlet UIButton *tutorialButton;
@@ -36,6 +38,12 @@
 
 @implementation ViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.gameController = [GameController shareManager];
+    [self.gameController setDelegate:self];
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -74,7 +82,7 @@
 
 - (void)setupStackView
 {
-    CGFloat gridWidth = [[GameController shareManager] gridWidth];
+    CGFloat gridWidth = [self.gameController gridWidth];
     self.pieceStackView  = [[StackView alloc] initWithFrame:CGRectMake(0,
                                                                        (CGRectGetHeight(self.view.frame) -
                                                                        gridWidth * kNUMBER_OF_ROW),
@@ -86,25 +94,24 @@
 
 - (IBAction)startGameClicked:(id)sender{
     [self.tutorialView setHidden:YES];
-    if ([[GameController shareManager] gameStatus] == GameRunning) { //pause game
-        [[GameController shareManager] pauseGame];
+    if ([self.gameController gameStatus] == GameRunning) { //pause game
+        [self.gameController pauseGame];
         [self.movingPieceView setHidden:YES];
         [self.startButton setImage:[UIImage imageNamed:@"gtk_media_play_ltr.png"]
                           forState:UIControlStateNormal];
     }
-    else if([[GameController shareManager] gameStatus] == GameStopped) { //start game
-        [[GameController shareManager] setDelegate:self];
-        [[GameController shareManager] startGame];
+    else if([self.gameController gameStatus] == GameStopped) { //start game
+        [self.gameController startGame];
         [self.movingPieceView setHidden:NO];
         [self.startButton setImage:[UIImage imageNamed:@"gtk_media_pause.png"]
                           forState:UIControlStateNormal];
-        self.movingPieceView = [[GameController shareManager] generatePiece];
+        self.movingPieceView = [self.gameController generatePiece];
         [self.view addSubview:self.movingPieceView];
     }
-    else if([[GameController shareManager] gameStatus] == GamePaused) { //resume game
+    else if([self.gameController gameStatus] == GamePaused) { //resume game
         [self.startButton setImage:[UIImage imageNamed:@"gtk_media_pause.png"]
                           forState:UIControlStateNormal];
-        [[GameController shareManager] resumeGame];
+        [self.gameController resumeGame];
         [self.movingPieceView setHidden:NO];
     }
     [self.stopButton setHidden:NO];
@@ -117,14 +124,14 @@
 
     [self removeCurrentPiece];
     
-    [[GameController shareManager] gameOver];
+    [self.gameController gameOver];
 }
 
 
 - (IBAction)showTutorial:(id)sender{
     if (self.tutorialView.isHidden) {
-        if ([[GameController shareManager] gameStatus] == GameRunning) {
-            [[GameController shareManager] pauseGame];
+        if ([self.gameController gameStatus] == GameRunning) {
+            [self.gameController pauseGame];
             [self.movingPieceView setHidden:YES];
         }
         [self.tutorialView setHidden:NO];
@@ -135,14 +142,14 @@
 }
 
 - (void)updateStack{
-    if ([[GameController shareManager] gameStatus] == GameStopped) {
+    if ([self.gameController gameStatus] == GameStopped) {
         self.movingPieceView = nil;
     }
     [self.pieceStackView setNeedsDisplay];
 }
 
 - (void)dropNewPiece{
-    self.movingPieceView = [[GameController shareManager] generatePiece];
+    self.movingPieceView = [self.gameController generatePiece];
     [self.view addSubview:self.movingPieceView];
 }
 
@@ -153,12 +160,12 @@
 }
 
 - (IBAction)leftClicked:(id)sender{
-    [[GameController shareManager] movePieceLeft];
+    [self.gameController movePieceLeft];
 }
 
 
 - (IBAction)rightClicked:(id)sender{
-    [[GameController shareManager] movePieceRight];
+    [self.gameController movePieceRight];
 }
 
 - (IBAction)respondToScreenTap:(UITapGestureRecognizer *)recognizer
@@ -175,8 +182,8 @@
 
 - (IBAction)respondToSwipe:(UITapGestureRecognizer *)recognizer
 {
-    if ([[GameController shareManager] gameStatus]) {
-        [[GameController shareManager] dropPiece];
+    if ([self.gameController gameStatus]) {
+        [self.gameController dropPiece];
     }
 }
 

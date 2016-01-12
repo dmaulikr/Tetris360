@@ -9,8 +9,10 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "StackView.h"
+#import "PieceView.h"
+#import "GameController.h"
 
-@interface ViewController ()
+@interface ViewController () <GameControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *startButton;
 @property (nonatomic, weak) IBOutlet UIButton *stopButton;
@@ -34,22 +36,17 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
     [self setupCameraView];
     [self setupStackView];
-    
     self.calibrationTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self
                                                            selector:@selector(calibrationFinished)
                                                            userInfo:nil
                                                             repeats:NO];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [self.tutorialView setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     [self.view addSubview:self.tutorialView];
 }
 
@@ -79,9 +76,9 @@
 {
     self.pieceStackView  = [[StackView alloc] initWithFrame:CGRectMake(0,
                                                                        (CGRectGetHeight(self.view.frame) -
-                                                                       kGridSize * kNUMBER_OF_ROW),
-                                                                       kGridSize * kNUMBER_OF_COLUMN,
-                                                                       kGridSize * kNUMBER_OF_ROW)];
+                                                                       kGridSize([UIScreen mainScreen].bounds.size.width) * kNUMBER_OF_ROW),
+                                                                       kGridSize([UIScreen mainScreen].bounds.size.width) * kNUMBER_OF_COLUMN,
+                                                                       kGridSize([UIScreen mainScreen].bounds.size.width) * kNUMBER_OF_ROW)];
     [self.view addSubview:self.pieceStackView];
     [self.stopButton setHidden:YES];
 }
@@ -90,12 +87,14 @@
     [self.tutorialView setHidden:YES];
     if ([[GameController shareManager] gameStatus] == GameRunning) { //pause game
         [[GameController shareManager] pauseGame];
+        [self.movingPieceView setHidden:YES];
         [self.startButton setImage:[UIImage imageNamed:@"gtk_media_play_ltr.png"]
                           forState:UIControlStateNormal];
     }
     else if([[GameController shareManager] gameStatus] == GameStopped) { //start game
         [[GameController shareManager] setDelegate:self];
         [[GameController shareManager] startGame];
+        [self.movingPieceView setHidden:NO];
         [self.startButton setImage:[UIImage imageNamed:@"gtk_media_pause.png"]
                           forState:UIControlStateNormal];
         self.movingPieceView = [[GameController shareManager] generatePiece];

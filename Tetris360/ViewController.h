@@ -6,11 +6,7 @@
 //  Copyright (c) 2013 Liang Shi. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "PieceView.h"
-#import "GameController.h"
-
-@interface ViewController : UIViewController <GameControllerDelegate>
+@interface ViewController : UIViewController
 
 - (IBAction)startGameClicked:(id)sender;
 - (IBAction)leftClicked:(id)sender;

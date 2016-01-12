@@ -13,7 +13,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-NSInteger const kNUMBER_OF_ROW = 17;
+NSInteger const kNUMBER_OF_ROW = 16;
 NSInteger const kNUMBER_OF_COLUMN = 30;
 NSInteger const kNUMBER_OF_COLUMN_PER_SCREEN = 10;
 NSInteger const kDEGREES_PER_COLUMN = 12;
@@ -55,7 +55,7 @@ float nfmod(float a,float b)
     if (self = [super init]) { 
         [self initCompass];
         [self initAudioPlayer];
-        self.gameSpeed = 1.0f;
+        _gameSpeed = 1.0f;
     }
     return self;
 }
@@ -221,7 +221,10 @@ float nfmod(float a,float b)
 
 - (BOOL)movePieceDown {
     
-    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x, self.currentPieceView.center.y + kGridSize);
+    if (self.gameStatus != GameRunning) {
+        return NO;
+    }
+    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x, self.currentPieceView.center.y + kGridSize([UIScreen mainScreen].bounds.size.width));
     CGPoint newLogicalCenter = CGPointMake(self.currentPieceView.pieceCenter.x, self.currentPieceView.pieceCenter.y + 1);
 
     NSArray *blocks = [self.currentPieceView blocksCenter];
@@ -274,6 +277,10 @@ float nfmod(float a,float b)
 
 - (void)dropPiece
 {
+    if (self.gameStatus != GameRunning) {
+        return;
+    }
+    
     while (![self movePieceDown] && self.isCurrentPieceMoving) {
         continue;
     }
@@ -299,8 +306,8 @@ float nfmod(float a,float b)
     for (NSValue *block in blocks) {
         CGPoint blockPoint = [block CGPointValue];
         if (
-            (location.x + blockPoint.x*kGridSize) <= (kGridSize/2) ||
-            (location.x + blockPoint.x*kGridSize) > ((kNUMBER_OF_COLUMN_PER_SCREEN+0.5) * kGridSize)) {
+            (location.x + blockPoint.x*kGridSize([UIScreen mainScreen].bounds.size.width)) <= (kGridSize([UIScreen mainScreen].bounds.size.width)/2) ||
+            (location.x + blockPoint.x*kGridSize([UIScreen mainScreen].bounds.size.width)) > ((kNUMBER_OF_COLUMN_PER_SCREEN+0.5) * kGridSize([UIScreen mainScreen].bounds.size.width))) {
             hittingEdgeOfScreen = YES;
         }
     }
@@ -308,7 +315,11 @@ float nfmod(float a,float b)
 }
 
 - (void)movePieceLeft{
-    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x - kGridSize, self.currentPieceView.center.y);
+    if (self.gameStatus != GameRunning) {
+        return;
+    }
+    
+    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x - kGridSize([UIScreen mainScreen].bounds.size.width), self.currentPieceView.center.y);
     CGPoint newLogicalCenter = CGPointMake(nfmod(self.currentPieceView.pieceCenter.x-1, kNUMBER_OF_COLUMN), self.currentPieceView.pieceCenter.y);
     
     if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {
@@ -318,7 +329,11 @@ float nfmod(float a,float b)
 }
 
 - (void)movePieceRight{
-    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x + kGridSize, self.currentPieceView.center.y);
+    if (self.gameStatus != GameRunning) {
+        return;
+    }
+    
+    CGPoint newViewCenter = CGPointMake(self.currentPieceView.center.x + kGridSize([UIScreen mainScreen].bounds.size.width), self.currentPieceView.center.y);
     CGPoint newLogicalCenter = CGPointMake(self.currentPieceView.pieceCenter.x + 1, self.currentPieceView.pieceCenter.y);
     
     if (![self screenBorderCollisionForLocation:newViewCenter] && ![self lateralCollisionForLocation:newLogicalCenter] && self.isCurrentPieceMoving) {

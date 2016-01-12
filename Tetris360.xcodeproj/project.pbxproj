@@ -16,7 +16,6 @@
 		5815960C1724D33B00046DFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815960B1724D33B00046DFD /* main.m */; };
 		581596101724D33B00046DFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815960F1724D33B00046DFD /* AppDelegate.m */; };
 		581596191724D33C00046DFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581596181724D33C00046DFD /* ViewController.m */; };
-		5815961C1724D33C00046DFD /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5815961A1724D33C00046DFD /* ViewController_iPhone.xib */; };
 		5E07A1881728409F0073BD49 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E07A1871728409F0073BD49 /* AVFoundation.framework */; };
 		5E07A18A172840A80073BD49 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E07A189172840A80073BD49 /* CoreLocation.framework */; };
 		5E4423D31729FBF00039946F /* puzzle1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5E4423D21729FBF00039946F /* puzzle1.txt */; };
@@ -27,6 +26,7 @@
 		66617B491728C16800244561 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66617B481728C16800244561 /* QuartzCore.framework */; };
 		66617B4B1728C55C00244561 /* TetrisTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 66617B4A1728C55C00244561 /* TetrisTheme.mp3 */; };
 		66617B4D1728C5E800244561 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66617B4C1728C5E800244561 /* AudioToolbox.framework */; };
+		7622B1151C4463F600CE2674 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7622B1141C4463F600CE2674 /* ViewController_iPhone.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,8 +43,7 @@
 		5815960E1724D33B00046DFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5815960F1724D33B00046DFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		581596171724D33C00046DFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		581596181724D33C00046DFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5815961B1724D33C00046DFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		581596181724D33C00046DFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5E07A1871728409F0073BD49 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5E07A189172840A80073BD49 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5E4423D21729FBF00039946F /* puzzle1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = puzzle1.txt; sourceTree = "<group>"; };
@@ -54,10 +53,11 @@
 		660EB33B172607BB002C493E /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GameController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6616B874172A13080045BF3E /* puzzle2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = puzzle2.txt; sourceTree = "<group>"; };
 		66617B451728609700244561 /* StackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackView.h; sourceTree = "<group>"; };
-		66617B461728609700244561 /* StackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackView.m; sourceTree = "<group>"; };
+		66617B461728609700244561 /* StackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = StackView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		66617B481728C16800244561 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		66617B4A1728C55C00244561 /* TetrisTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TetrisTheme.mp3; sourceTree = "<group>"; };
 		66617B4C1728C5E800244561 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7622B1141C4463F600CE2674 /* ViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController_iPhone.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +133,8 @@
 				5E4423D21729FBF00039946F /* puzzle1.txt */,
 				6616B874172A13080045BF3E /* puzzle2.txt */,
 				5151786E1C4310C700156644 /* puzzle3.txt */,
+				7622B1141C4463F600CE2674 /* ViewController_iPhone.xib */,
 				510F01891C42EE6E0007340B /* Images.xcassets */,
-				5815961A1724D33C00046DFD /* ViewController_iPhone.xib */,
 				66617B4A1728C55C00244561 /* TetrisTheme.mp3 */,
 				581596071724D33B00046DFD /* Tetris360-Info.plist */,
 				581596081724D33B00046DFD /* InfoPlist.strings */,
@@ -174,7 +174,7 @@
 				ORGANIZATIONNAME = Gree;
 				TargetAttributes = {
 					581595FB1724D33B00046DFD = {
-						DevelopmentTeam = 638ZWXPXPG;
+						DevelopmentTeam = TANNXMSH44;
 					};
 				};
 			};
@@ -200,9 +200,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7622B1151C4463F600CE2674 /* ViewController_iPhone.xib in Resources */,
 				5151786F1C4310C700156644 /* puzzle3.txt in Resources */,
 				5815960A1724D33B00046DFD /* InfoPlist.strings in Resources */,
-				5815961C1724D33C00046DFD /* ViewController_iPhone.xib in Resources */,
 				66617B4B1728C55C00244561 /* TetrisTheme.mp3 in Resources */,
 				510F018A1C42EE6E0007340B /* Images.xcassets in Resources */,
 				5E4423D31729FBF00039946F /* puzzle1.txt in Resources */,
@@ -235,14 +235,6 @@
 				581596091724D33B00046DFD /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5815961A1724D33C00046DFD /* ViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5815961B1724D33C00046DFD /* en */,
-			);
-			name = ViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

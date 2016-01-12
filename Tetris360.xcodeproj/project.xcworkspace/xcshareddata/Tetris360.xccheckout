@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BB1053EA-6180-4D07-BF69-D25BD1F606E0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Tetris360</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>430D2574AF90B28FA12C4D5002A43BDA5EA41E1A</key>
+		<string>github.com:freybupt/Tetris360.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Tetris360.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>430D2574AF90B28FA12C4D5002A43BDA5EA41E1A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:freybupt/Tetris360.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>430D2574AF90B28FA12C4D5002A43BDA5EA41E1A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>430D2574AF90B28FA12C4D5002A43BDA5EA41E1A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Tetris360</string>
+		</dict>
+	</array>
+</dict>
+</plist>

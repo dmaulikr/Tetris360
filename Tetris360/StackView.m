@@ -33,7 +33,7 @@
 
             PieceType type = [[GameController alloc] getTypeAtRow:i
                                                         column:[[GameController shareManager] columnForScreenColumn:j]];
-            CGRect rectangle = CGRectMake(j * kGridSize, i * kGridSize, kGridSize, kGridSize);
+            CGRect rectangle = CGRectMake(j * kGridSize([UIScreen mainScreen].bounds.size.width), i * kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width));
             
             if (type != PieceTypeNone) {
                 UIColor *color = [PieceView getColorOfType:type];

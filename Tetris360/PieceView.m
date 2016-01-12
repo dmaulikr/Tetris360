@@ -19,17 +19,17 @@
     CGRect frame;
     switch (type) {
         case PieceTypeI:
-            frame = CGRectMake(kGridSize*4.0, 0, kGridSize * 4, kGridSize * 4);
+            frame = CGRectMake(kGridSize([UIScreen mainScreen].bounds.size.width)*4.0, 0, kGridSize([UIScreen mainScreen].bounds.size.width) * 4, kGridSize([UIScreen mainScreen].bounds.size.width) * 4);
             break;
         case PieceTypeO:
-            frame = CGRectMake(kGridSize*4, 0, kGridSize * 2, kGridSize * 2);
+            frame = CGRectMake(kGridSize([UIScreen mainScreen].bounds.size.width)*4, 0, kGridSize([UIScreen mainScreen].bounds.size.width) * 2, kGridSize([UIScreen mainScreen].bounds.size.width) * 2);
             break;
         case PieceTypeJ:
         case PieceTypeL:
         case PieceTypeS:
         case PieceTypeT:
         case PieceTypeZ:
-            frame = CGRectMake(kGridSize*4.0, 0, kGridSize * 3, kGridSize * 3);
+            frame = CGRectMake(kGridSize([UIScreen mainScreen].bounds.size.width)*4.0, 0, kGridSize([UIScreen mainScreen].bounds.size.width) * 3, kGridSize([UIScreen mainScreen].bounds.size.width) * 3);
             break;
         default:
             break;
@@ -157,7 +157,7 @@
 
     for (NSInteger i = 0; i < kNUMBER_OF_BLOCKS; i++) {
         //draw each block
-        CGRect rectangle = CGRectMake(([[self.blocksCenter objectAtIndex:i] CGPointValue].x) * kGridSize, ([[self.blocksCenter objectAtIndex:i] CGPointValue].y) * kGridSize, kGridSize, kGridSize);
+        CGRect rectangle = CGRectMake(([[self.blocksCenter objectAtIndex:i] CGPointValue].x) * kGridSize([UIScreen mainScreen].bounds.size.width), ([[self.blocksCenter objectAtIndex:i] CGPointValue].y) * kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width), kGridSize([UIScreen mainScreen].bounds.size.width));
         CGContextFillRect(context, rectangle);
         CGContextStrokeRect(context, rectangle);
     }
@@ -165,7 +165,7 @@
 
 
 #pragma mark - touch events
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;{
     if (self.pieceRotated != PieceRotateStoped) {
         if (self.pieceRotated == PieceRotateThreeTimes) {
             self.pieceRotated = PieceOriginal;
